@@ -1,0 +1,19 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-UI", "1-UI", "{54F58506-DF17-4152-B00B-3CF68898A760}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Bussines", "2-Bussines", "{71D8BC0A-EBC9-4C35-8102-DAF51AEA96F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3- DataAccess", "3- DataAccess", "{4CC0791F-BF45-48B6-B6C8-34ED670D3871}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BA5F255-67B6-4EAE-9AF7-FE919366766D}
+	EndGlobalSection
+EndGlobal
