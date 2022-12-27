@@ -24,7 +24,7 @@
                             {
                                 <tr>
                                     <td>
-                                       
+
                                         @contact.Name
                                     </td>
                                     <td>
@@ -33,14 +33,19 @@
                                     <td>
                                         @contact.ContactPhone
                                     </td>
+                                    <td>
+                                        <a asp-controller="Contacts" asp-action="Details" asp-route-id="@contact.Id" class="btn btn-success"> Details</a>
+                                        <a asp-controller="Contacts" asp-action="Edit" asp-route-id="@contact.Id" class="btn btn-primary"> Edit</a>
+                                        <a asp-controller="Contacts" asp-action="Delete" asp-route-id="@contact.Id" class="btn btn-danger"> Delete</a>
+                                    </td>
                                 </tr>
-                           
 
 
 
-                            <!--<a asp-controller="Home" asp-action="Index" asp-route-id="@contact.Id" class="title">
-                                <b> @contact.Name</b>
-                            </a>!-->
+
+                                <!--<a asp-controller="Home" asp-action="Index" asp-route-id="@contact.Id" class="title">
+                                    <b> @contact.Name</b>
+                                </a>!-->
                             }
                         }
                     </tbody>
