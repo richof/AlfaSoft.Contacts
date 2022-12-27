@@ -20,6 +20,12 @@ namespace AlfaSoft.Contacts.DataAccess
             return contact;
         }
 
+        public async Task<bool> EmailIsInUseAsync(Guid id, string email)
+        {
+            var result = await _context.Contacts.AnyAsync(c => c.Id != id && c.Email == email);
+            return result;
+        }
+
         public async Task<IEnumerable<Contact>> GetAllAsync()
         {
             var result = await _context.Contacts.OrderBy(x=>x.Name).ToListAsync();
