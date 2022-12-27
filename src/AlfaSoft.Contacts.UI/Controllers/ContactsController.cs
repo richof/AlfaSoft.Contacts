@@ -2,10 +2,12 @@
 using AlfaSoft.Contacts.Business.Interfaces.Services;
 using AlfaSoft.Contacts.UI.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlfaSoft.Contacts.UI.Controllers
 {
+    [Authorize]
     public class ContactsController : Controller
     {
         private readonly IContactService _contactService;
@@ -64,6 +66,14 @@ namespace AlfaSoft.Contacts.UI.Controllers
 
             }
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Details(Guid id)
+        {
+            var contact = await _contactRepository.GetAsync(id);
+            var model = _mapper.Map<Contact, ContactViewModel>(contact);
+            return View(model);
         }
     }
 }

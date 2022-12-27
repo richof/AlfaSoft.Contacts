@@ -34,7 +34,13 @@ builder.Services.AddDbContext<MariaDbContext>(options => options
 //Services
 builder.Services.AddScoped<IContactRepository, ContactRepository>();
 builder.Services.AddScoped<IContactService, ContactService>();
-
+builder.Services
+         .AddAuthentication()
+         .AddCookie(options =>
+         {
+             options.LoginPath = "/login";
+             options.LogoutPath = "/logout";
+         });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 

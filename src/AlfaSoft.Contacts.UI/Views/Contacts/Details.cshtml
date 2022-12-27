@@ -1,0 +1,25 @@
+﻿@model AlfaSoft.Contacts.UI.Models.ContactViewModel
+
+<div class="col-md-3">
+    <div href="#" class="card card-product-grid">
+       
+        <figcaption class="info-wrap">
+          
+            <h3 class="card-text">
+                @Model.Name
+            </h3>
+        </figcaption>
+        <div class="card-footer  mt-1">
+
+            <h4>@Model.Email</h4>
+
+        </div>
+        <div class="card-body mt-1">
+
+            <h4>@Model.ContactPhone</h4>
+
+        </div>
+    </div>
+    <a asp-controller="Contacts" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary"> Edit</a>
+    <a asp-controller="Contacts" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger"> Delete</a>
+</div>
