@@ -30,11 +30,12 @@ namespace AlfaSoft.Contacts.Business
         public async Task<Contact> DeleteAsync(Guid Id)
         {
             Contact contact = await _contactRepository.GetAsync(Id);
+            
             if(contact == null) {
                 contact.ValidationResult.Errors.Add(new FluentValidation.Results.ValidationFailure("", "Contact doesn't exists or it was deleted"));
                 return contact;
             };
-
+            contact.IsDeleted = true;
             var result=await _contactRepository.UpdateAsync(contact);
 
             return result;

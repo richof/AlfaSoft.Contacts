@@ -25,7 +25,8 @@ namespace AlfaSoft.Contacts.DataAccess.Tests
                     Id = Guid.NewGuid(),
                     Name = "Alexander",
                     Email = "alex@mail.com",
-                    ContactPhone = "232323234"
+                    ContactPhone = "232323234",
+                    IsDeleted = false
                 };
                 context.Contacts.Add(c1);
                 Contact c2 = new Contact
@@ -33,7 +34,8 @@ namespace AlfaSoft.Contacts.DataAccess.Tests
                     Id = Guid.NewGuid(),
                     Name = "Barbara",
                     Email = "barbara@mail.com",
-                    ContactPhone = "345232323"
+                    ContactPhone = "345232323",
+                    IsDeleted = false
                 };
                 context.Contacts.Add(c2);
                 context.SaveChanges();
