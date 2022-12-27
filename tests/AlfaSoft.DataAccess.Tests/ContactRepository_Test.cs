@@ -14,8 +14,8 @@ namespace AlfaSoft.Contacts.DataAccess.Tests
     {
 
         [Fact(DisplayName = "Mus get a list of existing contacts")]
-        [Trait("Agrupador-Fact", "Descrição")]
-        public async Task Nome_Do_Teste()
+        [Trait("ContactRepository-Fact", "Return a list of Contacts")]
+        public async Task GetAllAsync_Parameterless_MustReturnAListOfContacts()
         {
             using (var context = new MariaDbContext(options))
             {
