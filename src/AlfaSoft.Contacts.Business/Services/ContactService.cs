@@ -20,5 +20,12 @@ namespace AlfaSoft.Contacts.Business
             if (!contact.ValidationResult.IsValid) return contact;
             return await _contactRepository.CreateAsync(contact);
         }
+        public async Task<Contact> UpdateAsync(Contact contact)
+        {
+            if (!contact.IsValid()) return contact;
+            contact.ValidationResult = await new ContactValidations(_contactRepository).ValidateAsync(contact);
+            if (!contact.ValidationResult.IsValid) return contact;
+            return await _contactRepository.UpdateAsync(contact);
+        }
     }
 }

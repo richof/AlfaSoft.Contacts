@@ -9,5 +9,6 @@ namespace AlfaSoft.Contacts.Business.Interfaces.Services
     public interface IContactService
     {
         Task<Contact> CreateAsync(Contact contact);
+        Task<Contact> UpdateAsync(Contact contact);
     }
 }
