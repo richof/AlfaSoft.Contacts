@@ -1,10 +1,19 @@
 ﻿namespace AlfaSoft.Contacts.Business
 {
+    
     public class ContactService
     {
-        public Task<Contact> CreateAsync(Contact contact)
+        private readonly IContactRepository _contactRepository;
+
+        public ContactService(IContactRepository contactRepository)
         {
-            throw new NotImplementedException();
+            _contactRepository = contactRepository;
+        }
+
+        public async Task<Contact> CreateAsync(Contact contact)
+        {
+            if (!contact.IsValid()) return contact;
+            return await _contactRepository.CreateAsync(contact);
         }
     }
 }
