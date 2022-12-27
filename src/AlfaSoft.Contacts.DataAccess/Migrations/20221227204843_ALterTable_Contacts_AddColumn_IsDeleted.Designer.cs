@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AlfaSoft.Contacts.DataAccess.Migrations
 {
     [DbContext(typeof(MariaDbContext))]
-    [Migration("20221227203011_ALterTable_Contacts_AddColumn_IsDeleted")]
+    [Migration("20221227204843_ALterTable_Contacts_AddColumn_IsDeleted")]
     partial class ALterTable_Contacts_AddColumn_IsDeleted
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,9 @@ namespace AlfaSoft.Contacts.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -47,16 +50,18 @@ namespace AlfaSoft.Contacts.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d9968de0-88a9-43d6-9b6c-95417823f307"),
+                            Id = new Guid("a9627009-cb7e-4524-bac2-3608d7634dfe"),
                             ContactPhone = "234321234",
                             Email = "ozzy@devil.com",
+                            IsDeleted = false,
                             Name = "Ozzy Orbourne"
                         },
                         new
                         {
-                            Id = new Guid("dc040d27-8fa9-4ebb-8ec4-c14b2fb08e03"),
+                            Id = new Guid("f048eeca-7402-49ce-b731-fa1005b802fe"),
                             ContactPhone = "343234546",
                             Email = "david@spidersfrommars.com",
+                            IsDeleted = false,
                             Name = "David Bowie"
                         });
                 });

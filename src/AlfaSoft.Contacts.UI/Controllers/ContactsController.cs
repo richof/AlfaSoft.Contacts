@@ -89,7 +89,7 @@ namespace AlfaSoft.Contacts.UI.Controllers
         public async Task<ActionResult> DeletePost(Guid id)
         {
             var result = await _contactService.DeleteAsync(id);
-            if (!result.ValidationResult.IsValid)
+            if (result.ValidationResult !=null && !result.ValidationResult.IsValid)
             {
 
                 foreach (var error in result.ValidationResult.Errors)

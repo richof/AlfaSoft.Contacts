@@ -26,14 +26,16 @@ namespace AlfaSoft.Contacts.DataAccess.Context
                 Id = Guid.NewGuid(),
                 Name = "Ozzy Orbourne",
                 Email = "ozzy@devil.com",
-                ContactPhone = "234321234"
+                ContactPhone = "234321234",
+                IsDeleted = false
             },
             new Contact
             {
                 Id = Guid.NewGuid(),
                 Name = "David Bowie",
                 Email = "david@spidersfrommars.com",
-                ContactPhone = "343234546"
+                ContactPhone = "343234546",
+                IsDeleted = false
             });
             
         }

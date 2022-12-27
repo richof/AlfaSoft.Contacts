@@ -22,7 +22,7 @@ namespace AlfaSoft.Contacts.DataAccess
 
         public async Task<bool> EmailIsInUseAsync(Guid id, string email)
         {
-            var result = await _context.Contacts.AnyAsync(c => c.Id != id && c.Email == email);
+            var result = await _context.Contacts.AnyAsync(c => c.Id != id && c.Email == email && !c.IsDeleted);
             return result;
         }
 
