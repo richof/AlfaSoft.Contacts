@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AlfaSoft.Contacts.DataAccess
 {
-    public class ContactRepository
+    public class ContactRepository:IContactRepository
     {
         private MariaDbContext _context;
 
@@ -13,9 +13,20 @@ namespace AlfaSoft.Contacts.DataAccess
             _context = context;
         }
 
+        public Task<Contact> CreateAsync(Contact contact)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<Contact>> GetAllAsync()
         {
             var result = await _context.Contacts.OrderBy(x=>x.Name).ToListAsync();
+            return result;
+        }
+
+        public async Task<Contact> GetAsync(Guid id)
+        {
+            var result = await _context.Contacts.Where(x => x.Id==id).FirstOrDefaultAsync();
             return result;
         }
     }
