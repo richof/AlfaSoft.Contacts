@@ -99,5 +99,36 @@ namespace AlfaSoft.Contacts.DataAccess.Tests
                 context.Contacts.Count().Should().Be(1);
             }
         }
+        //[Fact(DisplayName = "Must Update a contact ")]
+        //[Trait("ContactRepository-Fact", "Update a contact")]
+        //public async Task UpdateAsync_Contact_MustUpdateAContact()
+        //{
+        //    using (var context = new MariaDbContext(options))
+        //    {
+        //        //Arrange
+        //        Contact contact = new Contact
+        //        {
+        //            Id = Guid.NewGuid(),
+        //            Name = "Alexander",
+        //            Email = "alex@mail.com",
+        //            ContactPhone = "232323234"
+        //        };
+        //        Contact newStateContact = new Contact
+        //        {
+        //            Id = contact.Id,
+        //            Name = "Allisson",
+        //            Email = "alex@mail.com",
+        //            ContactPhone = "232323234"
+        //        };
+        //        context.Contacts.Attach(contact);
+        //       // context.SaveChanges();
+        //       // context.;
+        //        ContactRepository repo = new ContactRepository(context);
+        //        //Act
+        //        Contact result = await repo.UpdateAsync(newStateContact);
+        //        //Assert
+        //        context.Contacts.FirstOrDefault().Name.Should().Be("Allisson");
+        //    }
+        //}
     }
 }

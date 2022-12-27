@@ -31,5 +31,12 @@ namespace AlfaSoft.Contacts.DataAccess
             var result = await _context.Contacts.Where(x => x.Id==id).FirstOrDefaultAsync();
             return result;
         }
+
+        public async Task<Contact> UpdateAsync(Contact contact)
+        {
+            _context.Contacts.Update(contact);
+            await _context.SaveChangesAsync();
+            return contact;
+        }
     }
 }

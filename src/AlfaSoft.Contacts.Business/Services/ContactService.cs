@@ -1,7 +1,9 @@
-﻿namespace AlfaSoft.Contacts.Business
+﻿using AlfaSoft.Contacts.Business.Interfaces.Services;
+
+namespace AlfaSoft.Contacts.Business
 {
     
-    public class ContactService
+    public class ContactService: IContactService
     {
         private readonly IContactRepository _contactRepository;
 
