@@ -77,5 +77,27 @@ namespace AlfaSoft.Contacts.DataAccess.Tests
                 result.Name.Should().Be("Alexander");
             }
         }
+
+        [Fact(DisplayName = "Must Add a contact into the context")]
+        [Trait("ContactRepository-Fact", "Add a contact")]
+        public async Task CreateAsync_Contact_MustAddAContact()
+        {
+            using (var context = new MariaDbContext(options))
+            {
+                //Arrange
+                Contact newContact = new Contact
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Alexander",
+                    Email = "alex@mail.com",
+                    ContactPhone = "232323234"
+                };
+                ContactRepository repo = new ContactRepository(context);
+                //Act
+                Contact result= await repo.CreateAsync(newContact);
+                //Assert
+                context.Contacts.Count().Should().Be(1);
+            }
+        }
     }
 }

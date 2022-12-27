@@ -13,9 +13,11 @@ namespace AlfaSoft.Contacts.DataAccess
             _context = context;
         }
 
-        public Task<Contact> CreateAsync(Contact contact)
+        public async Task<Contact> CreateAsync(Contact contact)
         {
-            throw new NotImplementedException();
+            await _context.Contacts.AddAsync(contact);
+            await _context.SaveChangesAsync();
+            return contact;
         }
 
         public async Task<IEnumerable<Contact>> GetAllAsync()
