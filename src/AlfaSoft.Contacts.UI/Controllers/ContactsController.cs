@@ -28,10 +28,11 @@ namespace AlfaSoft.Contacts.UI.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(ContactViewModel model)
         {
-            if(!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) return View(model);
             var contact = _mapper.Map<ContactViewModel, Contact>(model);
             var result = await _contactService.CreateAsync(contact);
-            if (!result.ValidationResult.IsValid) { 
+            if (!result.ValidationResult.IsValid)
+            {
 
                 foreach (var error in result.ValidationResult.Errors)
                 {
@@ -74,6 +75,32 @@ namespace AlfaSoft.Contacts.UI.Controllers
             var contact = await _contactRepository.GetAsync(id);
             var model = _mapper.Map<Contact, ContactViewModel>(contact);
             return View(model);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var contact = await _contactRepository.GetAsync(id);
+            var model = _mapper.Map<Contact, ContactViewModel>(contact);
+            return View(model);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<ActionResult> DeletePost(Guid id)
+        {
+            var result = await _contactService.DeleteAsync(id);
+            if (!result.ValidationResult.IsValid)
+            {
+
+                foreach (var error in result.ValidationResult.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+                var model = _mapper.Map<Contact, ContactViewModel>(result);
+                return RedirectToAction("Delete", model);
+
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

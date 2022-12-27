@@ -10,6 +10,7 @@ namespace AlfaSoft.Contacts.Business
         public string ContactPhone { get; set; }
         public string Email { get; set; }
         public ValidationResult ValidationResult { get; set; }
+        public bool IsDeleted { get; set; }
         public Contact()
         {
             Id = Guid.NewGuid();

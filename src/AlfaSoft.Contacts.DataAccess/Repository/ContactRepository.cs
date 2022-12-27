@@ -28,13 +28,13 @@ namespace AlfaSoft.Contacts.DataAccess
 
         public async Task<IEnumerable<Contact>> GetAllAsync()
         {
-            var result = await _context.Contacts.OrderBy(x=>x.Name).ToListAsync();
+            var result = await _context.Contacts.Where(x=> !x.IsDeleted).OrderBy(x=>x.Name).ToListAsync();
             return result;
         }
 
         public async Task<Contact> GetAsync(Guid id)
         {
-            var result = await _context.Contacts.Where(x => x.Id==id).FirstOrDefaultAsync();
+            var result = await _context.Contacts.Where(x => x.Id==id && !x.IsDeleted).FirstOrDefaultAsync();
             return result;
         }
 
