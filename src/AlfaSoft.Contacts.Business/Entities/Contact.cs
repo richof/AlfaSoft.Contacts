@@ -16,7 +16,7 @@ namespace AlfaSoft.Contacts.Business
         {
             RuleFor(x => x.Name).MinimumLength(5).WithMessage("Name length must be grater than 5");
             RuleFor(x => x.ContactPhone).Length(9).WithMessage("Contact Phone must have a length of 9");
-            RuleFor(x => Email).EmailAddress().WithMessage("Email format is invalid");
+            RuleFor(x => Email).EmailAddress(FluentValidation.Validators.EmailValidationMode.Net4xRegex).WithMessage("Email format is invalid");
             ValidationResult = Validate(this);
             return ValidationResult.IsValid;
         }

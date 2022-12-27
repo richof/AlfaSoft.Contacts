@@ -1,0 +1,50 @@
+﻿using AlfaSoft.Contacts.Business;
+using AlfaSoft.Contacts.DataAccess.Context;
+using FluentAssertions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace AlfaSoft.Contacts.DataAccess.Tests
+{
+    public class ContactRepository_Test:BaseTest
+    {
+
+        [Fact(DisplayName = "Mus get a list of existing contacts")]
+        [Trait("Agrupador-Fact", "Descrição")]
+        public async Task Nome_Do_Teste()
+        {
+            using (var context = new MariaDbContext(options))
+            {
+                //Arrange
+                Contact c1 = new Contact
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Alexander",
+                    Email = "alex@mail.com",
+                    ContactPhone = "232323234"
+                };
+                context.Contacts.Add(c1);
+                Contact c2 = new Contact
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Barbara",
+                    Email = "barbara@mail.com",
+                    ContactPhone = "345232323"
+                };
+                context.Contacts.Add(c2);
+                context.SaveChanges();
+                ContactRepository repo = new ContactRepository(context);
+                //Act
+                IEnumerable<Contact> result = await repo.GetAllAsync();
+                //Assert
+                result.Count().Should().Be(2);
+            }
+        }
+
+
+    }
+}
